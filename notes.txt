@@ -1,0 +1,4 @@
+Some notes about models:
+o1 has high variance for the same prompt (probably because of CoT). gpt3.5, gpt4o, claude3.5 are 100% consistent at 0 temperature. grok-2-1212 low variance.
+GPT-3.5-turbo, grok-2-1212 can be gamed by putting a cost in prompt.
+Bigger models estimate higher costs
