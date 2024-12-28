@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Configuration for OpenRouter API
-API_KEY = "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"
+API_KEY = <API_KEY>
 API_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 # Define the system and user prompts

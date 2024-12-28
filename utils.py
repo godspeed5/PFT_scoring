@@ -112,7 +112,7 @@ def process_address(address, limit):
         response = requests.post(
           url="https://openrouter.ai/api/v1/chat/completions",
           headers={
-            "Authorization": f"Bearer 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",
+            "Authorization": f"Bearer <API_KEY>",
           },
           data=json.dumps({
             "model": "openai/gpt-3.5-turbo", # set model as needed. i'm using gpt-3.5-turbo here for its performance given speed.
