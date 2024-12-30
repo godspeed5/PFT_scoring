@@ -25,6 +25,7 @@ def get_transactions_for_address(address, limit=350):
     )
     response = client.request(request)
 
+    # raise exception if the response is not successful
     if not response.is_successful():
         raise Exception(f"Failed to fetch transactions: {response.result['error_message']}")
 
@@ -49,7 +50,7 @@ def parse_xrp_transaction(transaction):
     ledger_index = transaction.get("ledger_index", "Unknown")
     timestamp = transaction.get("close_time_iso", "Unknown")
 
-    # Fee conversion (drops to XRP)
+    # Fee conversion (1e6 drops is 1 XRP)
     fee_drops = Decimal(tx_json.get("Fee", 0))
     fee_xrp = fee_drops / Decimal(10**6)
 
@@ -72,7 +73,7 @@ def parse_xrp_transaction(transaction):
     metadata = []
     for memo in memos:
         try:
-            memo_data = bytes.fromhex(memo["Memo"]["MemoData"]).decode('utf-8')
+            memo_data = bytes.fromhex(memo["Memo"]["MemoData"]).decode('utf-8') # decode memo data
             metadata.append(memo_data)
         except (KeyError, ValueError):
             metadata.append("Invalid or missing memo data")
